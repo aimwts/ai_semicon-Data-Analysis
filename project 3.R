@@ -3,6 +3,22 @@ The dataset we started working on was obtained from the UCI repository. It initi
 observations (rows) which were outputs of 590 sensor measurements (columns/variables) and a 
 label of Yield Pass/Fail."
 
+if(!require('plotmo')) {
+  install.packages('plotmo')
+  library('plotmo')
+}
+
+# test plot_glmnet OK
+if (require(glmnet)) {
+  x <- matrix(rnorm(100 * 10), 100, 10)   # n=100 p=10
+  y <- x[,1] + x[,2] + 2 * rnorm(100)     # y depends only on x[,1] and x[,2]
+  mod <- glmnet(x, y)
+  
+  plot_glmnet(mod)
+  
+  # plotres(mod)                          # plot the residuals
+}
+
 #Loading data to workspace
 
 library(data.table)
